@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Donut Chart Example</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        #donutchart {
+            position: relative;
+        }
+
+        #chart {
+            width: 600px;
+            height: 400px;
+        }
+
+        #labelOverlay {
+            width: 90px;
+            height: 45px;
+            position: absolute;
+            top: 180px;
+            left: 185px;
+            text-align: center;
+        }
+
+        #total {
+            font-size: 28px;
+        }
+
+        #title {
+            font-size: 10px;
+        }
+    </style>
+    <script src="https://www.google.com/jsapi"></script>
+    <script>
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Content', 'Size'],
+                ['Low Risk', 567],
+                ['Moderate Risk', 210],
+                ['High Risk', 88]
+            ]);
+
+            var options = {
+                title: '',
+                pieHole: 0.66,
+                pieSliceBorderColor: 'none',
+                colors: ['#539536', '#0088cc', '#ce534b'],
+                legend: {
+                    alignment: 'center',
+                    position: 'right'
+                },
+                pieSliceText: 'none',
+
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chart'));
+
+            var getTotal = function (data) {
+                var total = 0;
+
+                for (var i = 0; i < data.getNumberOfRows(); i++) {
+                    total += data.getValue(i, 1);
+                }
+
+                document.getElementById('total').innerHTML = total;
+            }
+
+            getTotal(data);
+
+            chart.draw(data, options);
+
+        }
+
+        google.load('visualization', '1.0', {
+            'packages': ['corechart'],
+            callback: 'drawChart'       // callback: run drawChart after google libraries have loaded
+        });
+
+    </script>
+</head>
+<body>
+
+    <div id="donutchart">
+        <div id="chart"></div>
+        <div id="labelOverlay">
+            <div id="total"></div>
+            <div id="title">Total Participants</div>
+        </div>
+    </div>
+
+</body>
+</html>
