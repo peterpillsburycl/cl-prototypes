@@ -1,4 +1,5 @@
 $(function() {
+    
     // Tooltip
     $(".j-layerListItems .NavBar_menuItem.disabled").tooltip({
         "title": "Zoom-in to enable"

@@ -5,6 +5,10 @@ Need to remove from css and inherit properties */
     border-top: none;
 }
 
+.layerMenu ul {
+    min-width: auto;
+}
+
 .mtx-layerMenu-panel-heading {
     padding: 10px 15px;
 }
@@ -15,10 +19,6 @@ Need to remove from css and inherit properties */
 
 
 /* Changes */
-
-.layerMenu ul {
-    min-width: auto;
-}
 
 .layerMenu li {
     padding: 0 0 6px 0;
